@@ -50,6 +50,7 @@ package com.videojs.providers{
         private var _bufferedTime:Number = 0;
 
         public function HLSProvider() {
+          HLSSettings.logDebug = true;
           Log.info("https://github.com/mangui/flashls/releases/tag/v0.4.1.1");
           _hls = new HLS();
           _model = VideoJSModel.getInstance();
@@ -92,6 +93,7 @@ package com.videojs.providers{
           _duration = event.levels[0].duration;
           _metadata.width = event.levels[0].width;
           _metadata.height = event.levels[0].height;
+		  _metadata.levels = _hls.levels;
           if(_isAutoPlay || _looping) {
             _looping = false;
             play();
